@@ -14,8 +14,12 @@ ifdef::backend-html5[]
 // print the toc here (not at the default position)
 //toc::[]
 
-== Header 1
+== Hotelbetrieb
+
+plantuml::plantuml/hotelbetrieb.puml[]
 
 
-=== Header 2
 
+== Kinokette
+
+plantuml::plantuml/kinokette.puml[]
