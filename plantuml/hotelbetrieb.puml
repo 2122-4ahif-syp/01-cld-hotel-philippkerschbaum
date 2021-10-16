@@ -1,0 +1,54 @@
+@startuml
+
+class Zimmer{
+    nummer: int
+    personen: int
+}
+class Kategorie{
+    id: int
+    bezeichnung: String
+}
+class Mitarbeiter{
+    -svnr: String
+    -name: String
+    -adresse: String
+}
+class Raumpfleger{
+
+}
+class Betreuer{
+    -fach: String
+}
+class Kunde{
+    -kundennr: int
+    -name: String
+    -adresse: String
+}
+class Buchung{
+    -von: LocalDate
+    -bis: LocalDate
+}
+class Leistungspaket{
+    -bezeichnung: String
+    -preis: int
+    -anzahl: int
+}
+
+Kategorie"1"<--"*"Zimmer
+Mitarbeiter--|>Betreuer
+Mitarbeiter--|>Raumpfleger
+Raumpfleger-->Zimmer
+Kunde"1"<--"*"Buchung
+Zimmer"1"<--"*"Buchung
+Raumpfleger--Zimmer
+(Raumpfleger,Zimmer)..a
+Leistungspaket--|>Basispaket
+Leistungspaket--|>Luxuspaket
+Luxuspaket"1"<--"1..*"Basispaket
+Buchung"1"<--"*"Leistungspaket
+(Buchung,Leistungspaket)..ab
+Leistungspaket-->Betreuer
+(Leistungspaket,Betreuer)..abc
+
+
+@enduml
