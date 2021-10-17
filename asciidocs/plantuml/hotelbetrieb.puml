@@ -1,5 +1,7 @@
 @startuml
 
+left to right direction
+
 class Zimmer{
     nummer: int
     personen: int
@@ -36,19 +38,18 @@ class Leistungspaket{
 
 Kategorie"1"<--"*"Zimmer
 Mitarbeiter--|>Betreuer
-Mitarbeiter--|>Raumpfleger
-Raumpfleger-->Zimmer
+Mitarbeiter-r-|>Raumpfleger
+Raumpfleger-r-Zimmer
 Kunde"1"<--"*"Buchung
 Zimmer"1"<--"*"Buchung
-Raumpfleger--Zimmer
-(Raumpfleger,Zimmer)..a
+(Raumpfleger,Zimmer)..Putzen
 Leistungspaket--|>Basispaket
 Leistungspaket--|>Luxuspaket
-Luxuspaket"1"<--"1..*"Basispaket
-Buchung"1"<--"*"Leistungspaket
-(Buchung,Leistungspaket)..ab
+Luxuspaket"1"<-r-"1..*"Basispaket
+Buchung<--Leistungspaket
+(Buchung,Leistungspaket)..Pakete
 Leistungspaket-->Betreuer
-(Leistungspaket,Betreuer)..abc
+(Leistungspaket,Betreuer)..Leistungsbetruer
 
 
 @enduml
